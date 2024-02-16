@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.main.homeFragment.HomeFragment"
+        android:background="@color/main_background"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
+            <TextView
+                android:id="@+id/homeTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hello Sarah"
+                android:textSize="40sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/afacad_bold"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                >
+                <View android:id="@+id/strut"
+                    android:layout_width="10dp"
+                    android:layout_height="0dp"
+                    android:layout_centerHorizontal="true"/>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/weightLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@id/strut"
+                    android:layout_alignParentStart="true"
+                    app:cardCornerRadius="10dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#505050"
+                        android:padding="10dp"
+                        >
+                        <TextView
+                            android:id="@+id/heightTitle"
+                            android:text="Height (cm)"
+                            android:textSize="20sp"
+                            android:fontFamily="@font/afacad_bold"
+                            android:textColor="@color/white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+                        <TextView
+                            android:id="@+id/heightValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="160 cm"
+                            android:layout_below="@+id/heightTitle"
+                            android:textSize="30sp"
+                            android:textColor="@color/white"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="-5dp"
+                            android:paddingTop="0pt"
+                            android:paddingBottom="0pt"
+                            android:lineSpacingMultiplier="1"
+                            android:fontFamily="@font/afacad_bold"
+
+                            />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/heightLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/strut"
+                    android:layout_alignParentEnd="true"
+                    app:cardCornerRadius="10dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#505050"
+                        android:padding="10dp"
+                        >
+                        <TextView
+                            android:id="@+id/weightTitle"
+                            android:text="Weight (kg)"
+                            android:textSize="20sp"
+                            android:fontFamily="@font/afacad_bold"
+                            android:textColor="@color/white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+                        <TextView
+                            android:id="@+id/weightValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="60 kg"
+                            android:layout_below="@+id/weightTitle"
+                            android:textSize="30sp"
+                            android:textColor="@color/white"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="0pt"
+                            android:paddingTop="0pt"
+                            android:paddingBottom="0pt"
+                            android:lineSpacingMultiplier="1"
+                            android:fontFamily="@font/afacad_bold"
+                            />
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Workout Category"
+                android:textColor="@color/white"
+                android:fontFamily="@font/afacad_bold"
+                android:textSize="25sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cateList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cadio Workout"
+                android:textColor="@color/white"
+                android:fontFamily="@font/afacad_bold"
+                android:textSize="25sp"
+                android:layout_marginBottom="10dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/classicList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Warm-up and Stretching"
+                android:textColor="@color/white"
+                android:fontFamily="@font/afacad_bold"
+                android:textSize="25sp"
+                android:layout_marginBottom="20dp"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/warmUpList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                />
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

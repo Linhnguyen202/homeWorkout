@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bannerContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/main_background"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="20dp">
+        <RelativeLayout
+            android:layout_width="200dp"
+            android:layout_height="250dp"
+
+           >
+
+            <ImageView
+                android:id="@+id/banner"
+                android:layout_width="200dp"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/beginner_0"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shadow_opacity"/>
+            <TextView
+                android:id="@+id/workoutTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Beginner workout"
+                android:fontFamily="@font/afacad_bold"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:gravity="left"
+                android:layout_marginLeft="10dp"
+                android:layout_above="@+id/numberEx"
+                />
+            <TextView
+                android:text="2 workouts"
+                android:id="@+id/numberEx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:fontFamily="@font/afacad_medium"
+                android:textColor="@color/white"
+                android:layout_marginLeft="15dp"
+                android:textSize="15sp"
+                android:layout_marginBottom="20dp"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>

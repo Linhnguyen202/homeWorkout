@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.login.RegisterLayout.LevelFragment"
+        android:background="@color/main_background">
+
+        <include layout="@layout/custom_toolbar" android:id="@+id/customToolbar"/>
+        <TextView
+            android:id="@+id/bigTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/customToolbar"
+            android:text="Your regular physical activity level?"
+            android:gravity="center"
+            android:textSize="33sp"
+            android:fontFamily="@font/afacad_bold"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            />
+        <TextView
+            android:id="@+id/smallTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/bigTitle"
+            android:text="This helps us create your personalized plan"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:fontFamily="@font/afacad_bold"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="30dp"
+            />
+        <com.shawnlin.numberpicker.NumberPicker
+            android:id="@+id/numberPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:np_max="200"
+            app:np_min="100"
+            app:np_textColor="@color/white"
+            app:np_selectedTextColor="@color/white"
+            app:np_dividerColor="@color/primary_color"
+            app:np_width="100dp"
+            app:np_height="260dp"
+            app:np_wheelItemCount="5"
+            app:np_itemSpacing="15dp"
+            />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/nextBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            app:cardCornerRadius="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="20dp"
+            >
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/primary_color"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="30dp"
+                >
+
+                <ProgressBar
+                    android:id="@+id/progessBar"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_centerInParent="true"
+                    android:clipChildren="false"
+                    android:indeterminateTint="@color/white"
+                    android:visibility="gone"
+                    />
+                <TextView
+                    android:id="@+id/nextTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Next"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:visibility="visible"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/afacad_bold"
+
+                    />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

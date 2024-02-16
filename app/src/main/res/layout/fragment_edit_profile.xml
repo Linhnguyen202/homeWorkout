@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.main.profileFragment.EditProfileFragment"
+        android:background="@color/main_background">
+        <include layout="@layout/custom_toolbar" android:id="@+id/toolbar"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/usernameContainer"
+            android:layout_marginTop="20dp"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            android:layout_marginHorizontal="10dp"
+            android:textColorHint="#90A4AE"
+            android:textColor="#90A4AE"
+            app:boxStrokeWidth="2dp"
+            app:hintTextColor="@color/primary_color"
+            app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usernameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Username"
+                android:textColor="#90A4AE"
+                android:inputType="text"
+                android:lines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ageContainer"
+            android:layout_marginTop="20dp"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/usernameContainer"
+            android:layout_marginHorizontal="10dp"
+            android:textColorHint="#90A4AE"
+            android:textColor="#90A4AE"
+            app:hintTextColor="@color/primary_color"
+            app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ageEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Age"
+                android:textColor="#90A4AE"
+                android:inputType="number"
+                android:lines="1"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/updateBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="50dp"
+            app:cardCornerRadius="10dp"
+            >
+            <TextView
+                android:padding="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Update"
+                android:background="@color/primary_color"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/afacad_medium"
+                />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

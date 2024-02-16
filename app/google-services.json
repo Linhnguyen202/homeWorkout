@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "704993475613",
+    "firebase_url": "https://homework-a1edc-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "homework-a1edc",
+    "storage_bucket": "homework-a1edc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:704993475613:android:b6e6312bb873c30c301af4",
+        "android_client_info": {
+          "package_name": "com.example.homeworkout"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGGf9MqqtcajsGv18AzJqRfAxr-TRBII8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

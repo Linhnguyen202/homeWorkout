@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="main_background">#1C1C1E</color>
+    <color name="second_background">#2C2C2E</color>
+    <color name="primary_color">#D0FD3E</color>
+    <color  name="mtrl_textinput_default_box_stroke_color">#90A4AE</color>
+</resources>
