@@ -23,6 +23,7 @@ import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -146,21 +147,41 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,AuthViewModel>() {
                 try {
                     val email = binding.emailEditText.text.toString()
                     val pass = binding.passEditText.text.toString()
-                    auth.signInWithEmailAndPassword(email,pass).addOnCompleteListener {
-                        if(it.isSuccessful){
-                            getUserProfile()
+                    auth.signInWithEmailAndPassword(email,pass).await()
+                    if(auth.currentUser != null){
+                        getUserProfile()
+                    }
 
-                        }
-                    }.await()
+                }
+                catch (e : FirebaseAuthInvalidUserException) {
+                    withContext(Dispatchers.Main){
+                        binding.progessBar.visibility = View.GONE
+                        binding.signInTitle.visibility = View.VISIBLE
+                        Toast.makeText(requireContext(),"Authentication is failed",Toast.LENGTH_LONG).show()
+                    }
+
                 }
                 catch (e : FirebaseAuthInvalidCredentialsException) {
-                    Toast.makeText(requireContext(),"Authentication is failed",Toast.LENGTH_LONG).show()
+                    withContext(Dispatchers.Main){
+                        binding.progessBar.visibility = View.GONE
+                        binding.signInTitle.visibility = View.VISIBLE
+                        Toast.makeText(requireContext(),"Authentication is failed",Toast.LENGTH_LONG).show()
+                    }
                 }
                 catch (e : FirebaseAuthException){
-                    Toast.makeText(requireContext(),"Authentication is failed",Toast.LENGTH_LONG).show()
+                    withContext(Dispatchers.Main){
+                        binding.progessBar.visibility = View.GONE
+                        binding.signInTitle.visibility = View.VISIBLE
+                        Toast.makeText(requireContext(),"Authentication is failed",Toast.LENGTH_LONG).show()
+                    }
                 }
                catch (e : FirebaseNetworkException) {
-                   Toast.makeText(requireContext(),"Internet disconnected",Toast.LENGTH_LONG).show()
+                   withContext(Dispatchers.Main){
+                       binding.progessBar.visibility = View.GONE
+                       binding.signInTitle.visibility = View.VISIBLE
+                       Toast.makeText(requireContext(),"Internet disconnected",Toast.LENGTH_LONG).show()
+                   }
+
                }
             }
         }

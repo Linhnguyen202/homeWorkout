@@ -74,8 +74,7 @@ class PracticeFragment : DaggerFragment() {
         binding.timer.start();
     }
 
-    private fun createCountdownTimer (time : Long) {
-        mTimeLeftInMillis = time
+    private fun createCountdownTimer () {
         countDownTimer = object  : CountDownTimer(mTimeLeftInMillis,1000){
             override fun onTick(millisUntilFinished: Long) {
                 mTimeLeftInMillis = millisUntilFinished
@@ -114,6 +113,7 @@ class PracticeFragment : DaggerFragment() {
         Glide.with(this).load(arrayExercise?.get(currentIndex)!!.image_path).into(pauseBinding.nextExBannner)
         pauseBinding.nextExTite.text = arrayExercise?.get(currentIndex)!!.title
         pauseBinding.totalTitle.text = "${currentIndex + 1} / ${arrayExercise!!.size}"
+        mTimeLeftInMillisPause = 20000
         initRestTime()
         pauseBinding.skipBtn.setOnClickListener {
             countDownTimerPause.cancel()
@@ -169,6 +169,7 @@ class PracticeFragment : DaggerFragment() {
             }
             else{
                 currentIndex++
+                initRestLayout()
                 getData()
                 pauseTimer()
             }
@@ -176,6 +177,7 @@ class PracticeFragment : DaggerFragment() {
     }
     private fun startTimer(){
         if(arrayExercise!!.get(currentIndex).type.equals("1")){
+            createCountdownTimer()
             countDownTimer.start()
         }
         currentPlaying = true
@@ -207,7 +209,9 @@ class PracticeFragment : DaggerFragment() {
         binding.titleEx.text = arrayExercise?.get(currentIndex)!!.title.toString()
         Glide.with(this).load(arrayExercise?.get(currentIndex)!!.image_path).into(binding.banner)
         if(arrayExercise?.get(currentIndex)!!.type.toString().equals("1")){
-            createCountdownTimer(arrayExercise?.get(currentIndex)!!.time!!.toLong())
+            updateCountingDownText(arrayExercise?.get(currentIndex)!!.time!!.toLong(),"WORKING")
+            mTimeLeftInMillis = arrayExercise?.get(currentIndex)!!.time!!.toLong()
+            createCountdownTimer()
             binding.timeTxt.text = createTime(arrayExercise?.get(currentIndex)!!.time!!.toLong())
             binding.doneBtn.visibility = View.GONE
             binding.playBtn.visibility = View.VISIBLE

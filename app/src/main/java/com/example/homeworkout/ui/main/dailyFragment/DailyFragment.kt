@@ -35,6 +35,10 @@ class DailyFragment : BaseFragment<FragmentDailyBinding,DailyViewModel>() {
         days = ArrayList()
         calenderAdapter = CalenderAdapter(itemCalenderOnClick)
         binding.calendarRecyclerView.adapter = calenderAdapter
+
+        getTheDailyWorkout(CalenderUtils.formattedDate(LocalDate.now())!!)
+        addEvents()
+        setWeekView()
     }
     @Inject
     lateinit var sharePreferenceUtils : sharePreferenceUtils
@@ -50,13 +54,6 @@ class DailyFragment : BaseFragment<FragmentDailyBinding,DailyViewModel>() {
         return binding.root
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        addData()
-        addEvents()
-        setWeekView()
-    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun addEvents() {
@@ -74,14 +71,6 @@ class DailyFragment : BaseFragment<FragmentDailyBinding,DailyViewModel>() {
         binding.monthTitle.text = CalenderUtils.monthYearFromDate(CalenderUtils.selectedDate!!)
         val days: ArrayList<LocalDate?>? = CalenderUtils.daysInWeekArray(CalenderUtils.selectedDate!!)
         calenderAdapter.updateList(days!!)
-    }
-    private fun addData() {
-        val userId = sharePreferenceUtils.getUser(requireContext()).id
-        viewModel.getDailyWorkout(userId,CalenderUtils.selectedDate.toString())
-        viewModel.listDoneWorkout.observe(viewLifecycleOwner) {
-            doneWorkoutDoneHistoryAdapter.differ.submitList(it)
-            updateTotal(it)
-        }
     }
 
     private fun updateTotal(data : List<DoneWorkout>) {

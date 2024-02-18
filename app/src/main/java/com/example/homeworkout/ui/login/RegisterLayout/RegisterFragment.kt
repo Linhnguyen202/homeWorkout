@@ -133,15 +133,15 @@ class RegisterFragment : Fragment() {
     }
     private fun onSubmit(){
         if(!onValidate()){
-            val email = binding.emailEditText.text.toString()
-            val password = binding.passEditText.text.toString()
-            val username = binding.usernameEditText.text.toString()
-            // tạo profile
-            val profileUser = UserProfileChangeRequest.Builder()
-                .setDisplayName(username.toString()) // tên
-                .build()
-            try {
-                CoroutineScope(Dispatchers.IO).launch{
+            CoroutineScope(Dispatchers.IO).launch{
+                val email = binding.emailEditText.text.toString()
+                val password = binding.passEditText.text.toString()
+                val username = binding.usernameEditText.text.toString()
+                // tạo profile
+                val profileUser = UserProfileChangeRequest.Builder()
+                    .setDisplayName(username.toString()) // tên
+                    .build()
+                try {
                     withContext(Dispatchers.Main) {
                         binding.progessBar.visibility = View.VISIBLE
                         binding.registerTitle.visibility = View.GONE
@@ -165,18 +165,23 @@ class RegisterFragment : Fragment() {
 
 
                 }
-            }
-            catch (e : FirebaseAuthUserCollisionException) {
-                Toast.makeText(requireContext(),"User is exist",Toast.LENGTH_LONG).show()
-            }
-            catch (e : FirebaseAuthInvalidCredentialsException) {
-                Toast.makeText(requireContext(),"Authentication is failed",Toast.LENGTH_LONG).show()
-            }
-            catch (e : FirebaseAuthException){
-                Toast.makeText(requireContext(),"Authentication is failed",Toast.LENGTH_LONG).show()
-            }
-            catch (e : FirebaseNetworkException) {
-                Toast.makeText(requireContext(),"Internet disconnected",Toast.LENGTH_LONG).show()
+                catch (e : FirebaseAuthUserCollisionException) {
+                    withContext(Dispatchers.Main){
+                        binding.progessBar.visibility = View.GONE
+                        binding.registerTitle.visibility = View.VISIBLE
+                        Toast.makeText(requireContext(),"User is exist",Toast.LENGTH_LONG).show()
+                    }
+                }
+                catch (e : FirebaseAuthInvalidCredentialsException) {
+                    Toast.makeText(requireContext(),"Authentication is failed",Toast.LENGTH_LONG).show()
+                }
+                catch (e : FirebaseAuthException){
+                    Toast.makeText(requireContext(),"Authentication is failed",Toast.LENGTH_LONG).show()
+                }
+                catch (e : FirebaseNetworkException) {
+                    Toast.makeText(requireContext(),"Internet disconnected",Toast.LENGTH_LONG).show()
+                }
+
             }
 
         }

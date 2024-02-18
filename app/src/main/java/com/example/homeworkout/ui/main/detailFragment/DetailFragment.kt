@@ -106,10 +106,11 @@ class DetailFragment : DaggerFragment() {
     }
 
     private fun initToolbar() {
+        val data = args.Workout
         (activity as AppCompatActivity?)!!.setSupportActionBar(binding.toolbar)
         if ((activity as AppCompatActivity?)!!.supportActionBar != null) {
             (activity as AppCompatActivity?)!!.supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-           (activity as AppCompatActivity?)!!.supportActionBar!!.setTitle(args.Workout.title)
+           (activity as AppCompatActivity?)!!.supportActionBar!!.setTitle(data.title)
         }
         val primary = ContextCompat.getColor(requireContext(), R.color.main_background)
         binding.collapsingTollbar.setContentScrimColor(primary)
@@ -123,7 +124,7 @@ class DetailFragment : DaggerFragment() {
                 scrollRange = barLayout?.totalScrollRange!!
             }
             if (scrollRange + verticalOffset == 0){
-                binding.collapsingTollbar.title = "Title Collapse"
+                binding.collapsingTollbar.title = data.title
                 isShow = true
             } else if (isShow){
                 binding.collapsingTollbar.title = " " //careful there should a space between double quote otherwise it wont work
